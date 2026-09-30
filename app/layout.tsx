@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Atmos Weather — A clearer view of today',
-  description: 'Real-time weather, hourly forecasts, and the week ahead — wherever you are.',
+  title: 'Cuaca Hari Ini',
+  description: 'Prakiraan cuaca terkini, per jam, dan lima hari ke depan untuk Anda.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body className="antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
