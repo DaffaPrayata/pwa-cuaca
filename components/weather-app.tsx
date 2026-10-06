@@ -19,7 +19,8 @@ const number = (value: number | undefined) => Number.isFinite(value) ? Math.roun
 
 function normalize(raw: any): Weather {
   const times = raw.hourly.time as string[]
-  const points = times.slice(0, 24).map((time, index) => ({ time, temp: raw.hourly.temperature_2m[index], feels: raw.hourly.apparent_temperature[index], humidity: raw.hourly.relative_humidity_2m[index], weather: weatherText[raw.hourly.weather_code[index]] ?? 'Berawan', wind: raw.hourly.wind_speed_10m[index], rain: raw.hourly.precipitation_probability[index], uv: raw.hourly.uv_index[index] }))
+  const start = Math.max(0, times.findIndex((time) => new Date(time).getTime() >= Date.now() - 60 * 60 * 1000))
+  const points = times.slice(start, start + 24).map((time, index) => { const sourceIndex = start + index; return { time, temp: raw.hourly.temperature_2m[sourceIndex], feels: raw.hourly.apparent_temperature[sourceIndex], humidity: raw.hourly.relative_humidity_2m[sourceIndex], weather: weatherText[raw.hourly.weather_code[sourceIndex]] ?? 'Berawan', wind: raw.hourly.wind_speed_10m[sourceIndex], rain: raw.hourly.precipitation_probability[sourceIndex], uv: raw.hourly.uv_index[sourceIndex] } })
   return { days: raw.daily.time.slice(0, 7).map((date: string, index: number) => ({ date, points: points.filter(point => point.time.slice(0, 10) === date), high: raw.daily.temperature_2m_max[index], low: raw.daily.temperature_2m_min[index] })) }
 }
 

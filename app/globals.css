@@ -79,16 +79,17 @@ button:disabled { cursor: wait; opacity: .55; }
 .details strong { display: block; margin-top: 7px; font: 600 1.3rem var(--display); }
 .details span { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; }
 
-.forecast-section { min-width: 0; }
-.section-title { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
-.section-title h2 { margin: 0; font: 600 1.1rem var(--display); }
-.section-title span { color: var(--muted); font-size: 11px; }
-.hour-line { display: flex; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; padding: 13px 0 7px; gap: 0; }
-.hour-item { position: relative; flex: 0 0 67px; display: flex; flex-direction: column; align-items: center; gap: 6px; border-right: 1px solid var(--rule); color: var(--muted); font-size: 11px; }
-.hour-item:first-child { color: var(--ink); }
-.hour-item strong { color: var(--ink); font: 600 1.08rem var(--display); }
-.hour-item small { font-size: 10px; }
-.hour-item i { position: absolute; top: 18px; color: var(--accent); font-size: 10px; font-style: normal; }
+.forecast { min-width: 0; }
+.section-heading { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.section-heading h2 { margin: 0; font: 600 1.1rem var(--display); }
+.section-heading span { color: var(--muted); font-size: 11px; }
+.hourly-strip { display: flex; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; padding: 13px 0 7px; gap: 0; }
+.hour-card { flex: 0 0 108px; display: grid; grid-template-columns: 42px 1fr; grid-template-rows: auto auto auto; align-items: center; column-gap: 8px; row-gap: 3px; border-right: 1px solid var(--rule); padding: 0 12px; color: var(--muted); font-size: 11px; }
+.hour-card:first-child { color: var(--ink); }
+.hour-card time { grid-column: 1; grid-row: 1; }
+.hour-card strong { grid-column: 2; grid-row: 1; color: var(--ink); font: 600 1.08rem var(--display); }
+.hour-card span { grid-column: 1 / -1; grid-row: 2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hour-card small { grid-column: 1 / -1; grid-row: 3; font-size: 10px; color: var(--accent); }
 .days { display: flex; flex-direction: column; }
 .day-row { display: grid; grid-template-columns: 92px 22px minmax(80px, 1fr) 32px 32px; align-items: center; gap: 10px; min-height: 38px; border-bottom: 1px solid var(--rule); font-size: 12px; }
 .day-row svg { width: 16px; height: 16px; color: var(--accent); }
